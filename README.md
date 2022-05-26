@@ -49,12 +49,15 @@ Developed during my menteeship at [Microsoft Engage 2022](https://acehacker.com/
 it implements the following features : 
  * Content-Based-Filtering :
 
-        In this system, keywords are used to describe the items and a user profile is built to indicate the type of item this user likes. In other words, these algorithms try to recommend items that are similar to those that a user liked in the past, or is examining in the present. It does not rely on a user sign-in mechanism to generate this often temporary profile. In particular, various candidate items are compared with items previously rated by the user and the best-matching items are recommended. This approach has its roots in information retrieval and information filtering research.
+```sh
+    In this system, keywords are used to describe the items and a user profile is built to indicate the type of item this user likes. In other words, these algorithms try to recommend items that are similar to those that a user liked in the past, or is examining in the present. It does not rely on a user sign-in mechanism to generate this often temporary profile. In particular, various candidate items are compared with items previously rated by the user and the best-matching items are recommended. This approach has its roots in information retrieval and information filtering research.
+```
 
   * Genre-based filtering :
 
-         In this kind of filtering, user can select the genere and then click on the button, recommandation based on the tags will appear.
-
+```sh
+     In this kind of filtering, user can select the genere and then click on the button, recommandation based on the tags will appear.
+```
 
 ## **UI / UX**
 * Dark theme
@@ -130,9 +133,9 @@ Cosine similarity is a measure of similarity between two non-zero vectors of an 
 ## Demo
 Click to play
 
-[![Demo](https://user-images.githubusercontent.com/55680995/125494808-c6d0e73e-3ade-4e2e-8a07-b9da101e6068.png)](https://youtu.be/gfOrD80Qvcc)
+[![Demo](https://user-images.githubusercontent.com/55680995/125494808-c6d0e73e-3ade-4e2e-8a07-b9da101e6068.png)](https://youtu.be/firdaus)
 
-**- [Screenshots](https://github.com/Karanjot-singh/microsoft_teams_clone/blob/main/docs/Features%20%26%20Screenshots.pdf)**
+**- [Screenshots](https://github.com/Firdaus/microsoft_teams_clone/blob/main/docs/Features%20%26%20Screenshots.pdf)**
 
 
 ## Project References
