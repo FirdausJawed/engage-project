@@ -49,15 +49,13 @@ Developed during my menteeship at [Microsoft Engage 2022](https://acehacker.com/
 it implements the following features : 
  * Content-Based-Filtering :
 
-```sh
     In this system, keywords are used to describe the items and a user profile is built to indicate the type of item this user likes. In other words, these algorithms try to recommend items that are similar to those that a user liked in the past, or is examining in the present. It does not rely on a user sign-in mechanism to generate this often temporary profile. In particular, various candidate items are compared with items previously rated by the user and the best-matching items are recommended. This approach has its roots in information retrieval and information filtering research.
-```
+
 
   * Genre-based filtering :
 
-```sh
-     In this kind of filtering, user can select the genere and then click on the button, recommandation based on the tags will appear.
-```
+    In this kind of filtering, user can select the genere and then click on the button, recommandation based on the tags will appear.
+
 
 ## **UI / UX**
 * Dark theme
