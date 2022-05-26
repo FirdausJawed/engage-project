@@ -1,67 +1,77 @@
-# **Sinemate**
-<p align="center"><img align="center" height="400px" width="400px"  src="81986-movie.gif" /> </p>
+<div id="top"></div>
 
-# Description:- 
-In this project, I have made a movie recommendation system in which a user can choose a movie and the system will recommend 20 movies.
+# Sinemate - Movie Recommender Web App
 
-</br>
+[![GitHub last commit](https://img.shields.io/github/last-commit/FirdausJawed/engage-project?style=for-the-badge&logo=git)](https://github.com/FirdausJawed/) 
+[![GitHub stars](https://img.shields.io/github/stars/FirdausJawed/engage-project?style=for-the-badge)](https://github.com/FirdausJawed/engage-project/stargazers) 
+[![GitHub forks](https://img.shields.io/github/forks/FirdausJawed/engage-project?style=for-the-badge&logo=git)](https://github.com/FirdausJawed/engage-project/network)
+[![GitHub issues](https://img.shields.io/github/issues/FirdausJawed/engage-project?style=for-the-badge)](https://github.com/FirdausJawed/engage-project/issues)
+[![GitHub stars](https://img.shields.io/github/stars/FirdausJawed/engage-project?style=for-the-badge)](https://github.com/FirdausJawed/engage-project/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/FirdausJawed/engage-project?color=%230000ff&style=for-the-badge)](https://github.com/FirdausJawed/engage-project/network)
+[![GitHub license](https://img.shields.io/github/license/FirdausJawed/engage-project?style=for-the-badge)](https://github.com/FirdausJawed/engage-project)
+
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+  <a href="https://github.com/FirdausJawed/engage-project">
+    <img src="81986-movie.gif" alt="Logo" width="120" height="120">
+  </a>
+
+  <h3 align="center"><b>Submission for Microsoft Engage 2022 🌟</b></h3>
+
+</div>
 
 
-# Terms
-- **Content-based recommendation :**
+## **_Index_**
+- [About](#About)
+- [UI/UX](#UI/UX)
+- [Link of the website](#Complete-website-link)
+- [Instructions](#Instruction)
+  * [How to commit in CLI](#Instruction)
+  * [How to sync your forked repository](#Instruction)
 
-In this system, keywords are used to describe the items and a user profile is built to indicate the type of item this user likes. In other words, these algorithms try to recommend items that are similar to those that a user liked in the past, or is examining in the present. It does not rely on a user sign-in mechanism to generate this often temporary profile. In particular, various candidate items are compared with items previously rated by the user and the best-matching items are recommended. This approach has its roots in information retrieval and information filtering research.
+- [Overview of the codebase](#overview-of-the-codebase)
 
-- **CountVectorizer:**
+- [Implementation](#implementation)
+  * [Libraries/modules Used](#Libraries/modules-used)
+  * [Concept used](#Concept-used)
+  * [Frequently used terms](#Frequently-used-terms)
+- [Demo & Screenshots](#Demo)
+- [Project References](#project-references)
+- [License](#license)
+- [Connect with me](#connect-with-me)
 
-The CountVectorizer provides a simple way to both tokenize a collection of text documents and build a vocabulary of known words, but also to encode new documents using that vocabulary.
 
-- **Cosine Similarity :**
+## About
 
-Cosine similarity is a measure of similarity between two non-zero vectors of an inner product space that measures the cosine of the angle between them. The cosine of 0° is 1, and it is less than 1 for any angle in the interval (0, π] radians
+Cinemate is a Movie Recommendation application with a rich integrated UI which helps you to find best movies of your choice .
+Developed during my menteeship at [Microsoft Engage 2022](https://acehacker.com/microsoft/engage2022/),
+it implements the following features : 
+ * Content-Based-Filtering :
 
-<br>
+        In this system, keywords are used to describe the items and a user profile is built to indicate the type of item this user likes. In other words, these algorithms try to recommend items that are similar to those that a user liked in the past, or is examining in the present. It does not rely on a user sign-in mechanism to generate this often temporary profile. In particular, various candidate items are compared with items previously rated by the user and the best-matching items are recommended. This approach has its roots in information retrieval and information filtering research.
 
-# Libraries/Modules used 
+  * Genre-based filtering :
 
-- Numpy
-- Pandas
-- Scikit-learn
-- NLTK
-- Streamlit
+         In this kind of filtering, user can select the genere and then click on the button, recommandation based on the tags will appear.
 
-# Video Demo
-___________________________________
-___________________________________
-___________________________________
-___________________________________
-___________________________________
-___________________________________
-___________________________________
-___________________________________
-___________________________________
-___________________________________
 
-<br>
+## **UI / UX**
+* Dark theme
+* Light theme
+* Fully Responsive UI
+* Minimalist UI
 
-**Steps to contribute**
------------------------------
+## **Complete website link**
+[Here](http://share.streamlit.io/firdausjawed/engage-project/main/main.py)
 
-- Go to Issue section either create a new issue or choose an existing one and choose your preferred language.
-- Wait for issue to be assigned to you.
-- Fork this repository.
-- Create a new branch with your name.
-- Add your code in relevant folder.
-- Commit your file with **appropriate** message.
-- Create Pull request.
-
-**Instructions**
+## **Instructions**
 -----------------------
 
-### How To Commit In CLI
+### How to commit in CLI
 
 ```sh
-$ git clone git@github.com:your_username/DSA-Library.git
+$ git clone https://github.com/FirdausJawed/engage-project.git
 $ git checkout -b Branch_Name
 $ git add .
 $ git commit -m 'message'
@@ -69,7 +79,7 @@ $ git push -u origin Branch_Name
 
 ```
 
-### How To sync your forked repository
+### How to sync your forked repository
 
 ```sh
 $ git fetch --all --prune
@@ -80,8 +90,70 @@ $ git push origin master
 ```
 
 
-## Collaborator
+### Overview of the codebase
+<a href="#"><p align="center"> <img src="1.jpg"/></p></a>
 
-**[Firdaus Jawed](https://github.com/FirdausJawed)**
+<a href="#"><p align="center"> <img src="2.jpg"/></p></a>
 
-#### Thanks for reading. Connect me on [LinkedIn](https://www.linkedin.com/in/firdaus-jawed/) or Github.
+  * For more please refer to my [Jupyter notebook file](https://drive.google.com/file/d/1C-QFOuYaa3Om97RTVNgqQg-U73CweNpy/view?usp=sharing) for detailed explanation.
+
+
+## **Implementation**
+
+### Libraries/Modules used 
+
+- Numpy
+- Pandas
+- Scikit-learn
+- NLTK
+- Streamlit
+
+### Concepts used
+- Bag of words
+- Count vectorizer
+- Cosine Similarity
+
+## Frequently used terms
+
+- **Bags of word model :**
+Bag of words model helps convert the text into numerical representation (numerical feature vectors) such that the same can be used to train models using machine learning algorithms. 
+
+- **Scikit Learn :**
+Scikit-learn provides a range of supervised and unsupervised learning algorithms via a consistent interface in Python.The library is focused on modeling data. It is not focused on loading, manipulating and summarizing data.
+
+- **CountVectorizer :**
+The CountVectorizer provides a simple way to both tokenize a collection of text documents and build a vocabulary of known words, but also to encode new documents using that vocabulary.
+
+- **Cosine Similarity :**
+Cosine similarity is a measure of similarity between two non-zero vectors of an inner product space that measures the cosine of the angle between them. The cosine of 0° is 1, and it is less than 1 for any angle in the interval (0, π] radians
+
+## Demo
+Click to play
+
+[![Demo](https://user-images.githubusercontent.com/55680995/125494808-c6d0e73e-3ade-4e2e-8a07-b9da101e6068.png)](https://youtu.be/gfOrD80Qvcc)
+
+**- [Screenshots](https://github.com/Karanjot-singh/microsoft_teams_clone/blob/main/docs/Features%20%26%20Screenshots.pdf)**
+
+
+## Project References
+- [Streamlit Docs](https://docs.streamlit.io)
+- [Rapid APIs](https://www.rapitapi.com/)
+- [CampusX YouTube numpy playlist](https://www.youtube.com/playlist?list=PLKnIA16_Rmvb-ToL3RQ_bwxG4_ND-0-DT)
+- [CampusX YouTube pandas playlist](https://youtube.com/playlist?list=PLfP3JxW-T70Gf4iJXPb0Yw5_-tDRCD6LB)
+- [Python basics Datacamp](https://www.datacamp.com/courses/intro-to-python-for-data-science)
+- [Stanford course by Andrew ng](https://www.coursera.org/learn/machine-learning)
+
+
+## License
+
+Sinemate is released under the [MIT License](https://github.com/FirdausJawed/engage-project/blob/main/LICENSE).
+
+## Connect with me
+Drop by and say hello!
+
+[<img height="30" src="https://img.shields.io/badge/linkedin-0077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white" />][LinkedIn]
+[<img height="30" src="https://img.shields.io/badge/twitter-1DA1F2.svg?&style=for-the-badge&logo=twitter&logoColor=white" />][twitter]
+
+[linkedIn]:https://www.linkedin.com/in/firdaus-jawed/
+
+[twitter]: https://twitter.com/jawedfirdaus01
