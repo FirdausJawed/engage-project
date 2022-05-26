@@ -36,6 +36,7 @@
   * [Libraries/modules Used](#Libraries/modules-used)
   * [Concept used](#Concept-used)
   * [Frequently used terms](#Frequently-used-terms)
+  * [Data-set used](#Data-set-used)
 - [Demo & Screenshots](#Demo)
 - [Project References](#project-references)
 - [License](#license)
@@ -108,6 +109,9 @@ $ git push origin master
 - Scikit-learn
 - NLTK
 - Streamlit
+
+### Data-set used
+[here](https://drive.google.com/drive/folders/1AnDwQU0ATlM-I8xR5XSK4Lwe9ToEBu-_?usp=sharing)
 
 ### Concepts used
 - Bag of words
