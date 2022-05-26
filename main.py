@@ -67,13 +67,13 @@ def recommend(movie):
     return recommended_movie_names,recommended_movie_posters,recommended_movie_genre
 
 
-st.header('Movie Recommender System')
+st.header('Sinemate')
 movies = pickle.load(open('movie_list.pkl','rb'))
 similarity = pickle.load(open('similarity.pkl','rb'))
 
 movie_list = movies['title'].values
 selected_movie = st.selectbox(
-    "Type or select a movie from the dropdown",
+    "Select a movie from the dropdown",
     movie_list
 )
 
@@ -201,7 +201,7 @@ if st.button('Show Recommendation'):
 
 
     # Row 7
-    st.subtitle(recommended_movie_names[6])
+    st.subheader(recommended_movie_names[6])
     st.image(recommended_movie_posters[6], width=250, caption=recommended_movie_names[6])
     print('\n')
     y = ''
