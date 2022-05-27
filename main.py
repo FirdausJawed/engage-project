@@ -1,9 +1,21 @@
 import pickle
 import streamlit as st
 import requests
-import json
-import http.client
-import time
+
+# genre lang rate sorting
+def movie_rating_wise(genre, lang, rate, sorting):
+    url = "https://ott-details.p.rapidapi.com/advancedsearch"
+
+    querystring = {"start_year": "1970", "end_year": "2022", "min_imdb": str(rate), "max_imdb": "10", "genre": str(genre),
+                   "language": str(lang), "type": "movie", "sort": str(sorting), "page": "1"}
+    headers = {
+        "X-RapidAPI-Host": "ott-details.p.rapidapi.com",
+        "X-RapidAPI-Key": "472a6d2210msh03124957d5c6fb5p1ceaf8jsn281b03a656d2"
+    }
+    response = requests.request("GET", url, headers=headers, params=querystring)
+    val = response.json()
+    now = val['results']
+    return now
 
 def movie_details(movie_name):
     url = "https://movie-details1.p.rapidapi.com/imdb_api/movie"
@@ -56,7 +68,7 @@ def recommend(movie):
     recommended_movie_posters = []
     recommended_movie_genre = []
 
-    with st.spinner('Bear with me ...'):
+    with st.spinner('Wait for a few seconds ...'):
         for i in distances[1:12]:
             # fetch the movie poster
             movie_id = movies.iloc[i[0]].movie_id
@@ -66,196 +78,77 @@ def recommend(movie):
             recommended_movie_genre.append(b)
     return recommended_movie_names,recommended_movie_posters,recommended_movie_genre
 
+selected_option= st.sidebar.selectbox(
+        "Select the type of recommendation system you want :",
+        ( 'Genre', 'Movie'))
 
-st.header('Sinemate')
-movies = pickle.load(open('models/movie_list.pkl','rb'))
-similarity = pickle.load(open('models/similarity.pkl','rb'))
+if selected_option=="Movie":
 
-movie_list = movies['title'].values
-selected_movie = st.selectbox(
-    "Select a movie from the dropdown",
-    movie_list
-)
-
-if st.button('Show Recommendation'):
-    recommended_movie_names,recommended_movie_posters,recommended_movie_genre = recommend(selected_movie)
-
-    # Row 1
-    st.subheader(recommended_movie_names[0])
-    st.image(recommended_movie_posters[0],width=250,caption=recommended_movie_names[0])
-    print('\n')
-    y=''
-    for x in recommended_movie_genre[0]:
-        y+=x+' , '
-    with st.spinner('Fetching movie details ...'):
-        rating, release_year, duration, description, actors = movie_details(recommended_movie_names[0])
-        st.markdown("Ratings : " + str(rating))
-        st.markdown("Release Year : " + str(release_year))
-        st.markdown("Duration : " + str(duration))
-        st.markdown("Genre : " + y)
-        st.markdown("Description : " + str(description))
-        leads=''
-        for i in range(0,4):
-            leads+=actors[i]['name']+' , '
-        st.markdown("Cast : " + str(leads))
+    st.header('Sinemate as Movie Recommendation System')
+    movies = pickle.load(open('models/movie_list.pkl','rb'))
+    similarity = pickle.load(open('models/similarity.pkl','rb'))
 
 
-    # Row 2:
-    st.subheader(recommended_movie_names[1])
-    st.image(recommended_movie_posters[1],width=250,caption=recommended_movie_names[1])
-    print('\n')
-    y = ''
-    for x in recommended_movie_genre[1]:
-        y += x + ' , '
-    with st.spinner('Fetching movie details ...'):
-        rating, release_year, duration, description, actors = movie_details(recommended_movie_names[1])
-        st.markdown("Ratings : " + str(rating))
-        st.markdown("Release Year : " + str(release_year))
-        st.markdown("Duration : " + str(duration))
-        st.markdown("Genre : " + y)
-        st.markdown("Description : " + str(description))
-        leads = ''
-        for i in range(0, 4):
-            leads += actors[i]['name'] + ' , '
-        st.markdown("Cast : " + str(leads))
+    movie_list = movies['title'].values
+    selected_movie = st.selectbox(
+        "Select a movie from the dropdown",
+        movie_list
+    )
+
+    if st.button('Show Recommendation'):
+        recommended_movie_names,recommended_movie_posters,recommended_movie_genre = recommend(selected_movie)
+
+        # Rows
+        for i in range(0,9):
+            st.text(recommended_movie_names[i])
+            st.image(recommended_movie_posters[i],width=250,caption=recommended_movie_names[i])
+            print('\n')
+            y=''
+            for x in recommended_movie_genre[i]:
+                y+=x+' , '
+            with st.spinner('Fetching movie details ...'):
+                rating, release_year, duration, description, actors = movie_details(recommended_movie_names[i])
+                st.markdown("Ratings : " + str(rating))
+                st.markdown("Release Year : " + str(release_year))
+                st.markdown("Duration : " + str(duration))
+                st.markdown("Genre : " + y)
+                st.markdown("Description : " + str(description))
+                leads=''
+                for j in range(0,4):
+                    leads+=actors[j]['name']+' , '
+                st.markdown("Cast : " + str(leads))
+
+elif selected_option=="Genre":
+    st.header("Sinemate as Genre Based Recommendation System")
+    genre = st.selectbox(
+        "Select the genre form the drop down",
+        ('action','Comedy','romance', 'Drama', 'Documentary','horror','drama','thriller'))
+
+    lang = st.radio(
+        "Please Select the language of the film",
+        ('English', 'Hindi', 'Tamil','French','Japanese'))
+
+    rate = st.slider('Select the minimum rating of the movie ', 0, 10, 1)
+
+    sorting = st.selectbox(
+        'Select the order of filtering?',
+        ('highestrated' , 'lowestrated' , 'latest' , 'oldest'))
+
+    if st.button('Show Recommendation'):
+        with st.spinner('Fetching movie details ...'):
+            val=movie_rating_wise(genre ,lang ,rate ,sorting)
 
 
-    # ROW 3:
-    st.subheader(recommended_movie_names[2])
-    st.image(recommended_movie_posters[2],width=250,caption=recommended_movie_names[2])
-    print('\n')
-    y = ''
-    for x in recommended_movie_genre[2]:
-        y += x + ' , '
-    with st.spinner('Fetching movie details ...'):
-        rating, release_year, duration, description, actors = movie_details(recommended_movie_names[2])
-        st.markdown("Ratings : " + str(rating))
-        st.markdown("Release Year : " + str(release_year))
-        st.markdown("Duration : " + str(duration))
-        st.markdown("Genre : " + y)
-        st.markdown("Description : " + str(description))
-        leads = ''
-        for i in range(0, 4):
-            leads += actors[i]['name'] + ' , '
-        st.markdown("Cast : " + str(leads))
-
-
-    # Row 4
-    st.subheader(recommended_movie_names[3])
-    st.image(recommended_movie_posters[3], width=250, caption=recommended_movie_names[3])
-    print('\n')
-    y = ''
-    for x in recommended_movie_genre[3]:
-        y += x + ' , '
-    with st.spinner('Fetching movie details ...'):
-        rating, release_year, duration, description, actors = movie_details(recommended_movie_names[3])
-        st.markdown("Ratings : " + str(rating))
-        st.markdown("Release Year : " + str(release_year))
-        st.markdown("Duration : " + str(duration))
-        st.markdown("Genre : " + y)
-        st.markdown("Description : " + str(description))
-        leads = ''
-        for i in range(0, 4):
-            leads += actors[i]['name'] + ' , '
-        st.markdown("Cast : " + str(leads))
-
-
-    # Row 5
-    st.subheader(recommended_movie_names[4])
-    st.image(recommended_movie_posters[4],width=250,caption=recommended_movie_names[4])
-    print('\n')
-    y = ''
-    for x in recommended_movie_genre[4]:
-        y += x + ' , '
-    with st.spinner('Fetching movie details ...'):
-        rating, release_year, duration, description, actors = movie_details(recommended_movie_names[4])
-        st.markdown("Ratings : " + str(rating))
-        st.markdown("Release Year : " + str(release_year))
-        st.markdown("Duration : " + str(duration))
-        st.markdown("Genre : " + y)
-        st.markdown("Description : " + str(description))
-        leads = ''
-        for i in range(0, 4):
-            leads += actors[i]['name'] + ' , '
-        st.markdown("Cast : " + str(leads))
-
-
-    # ROW 6
-    st.subheader(recommended_movie_names[5])
-    st.image(recommended_movie_posters[5], width=250, caption=recommended_movie_names[5])
-    print('\n')
-    y = ''
-    for x in recommended_movie_genre[5]:
-        y += x + ' , '
-    with st.spinner('Fetching movie details ...'):
-        rating, release_year, duration, description, actors = movie_details(recommended_movie_names[5])
-        st.markdown("Ratings : " + str(rating))
-        st.markdown("Release Year : " + str(release_year))
-        st.markdown("Duration : " + str(duration))
-        st.markdown("Genre : " + y)
-        st.markdown("Description : " + str(description))
-        leads = ''
-        for i in range(0, 4):
-            leads += actors[i]['name'] + ' , '
-        st.markdown("Cast : " + str(leads))
-
-
-    # Row 7
-    st.subheader(recommended_movie_names[6])
-    st.image(recommended_movie_posters[6], width=250, caption=recommended_movie_names[6])
-    print('\n')
-    y = ''
-    for x in recommended_movie_genre[6]:
-        y += x + ' , '
-    with st.spinner('Fetching movie details ...'):
-        rating, release_year, duration, description, actors = movie_details(recommended_movie_names[6])
-        st.markdown("Ratings : " + str(rating))
-        st.markdown("Release Year : " + str(release_year))
-        st.markdown("Duration : " + str(duration))
-        st.markdown("Genre : " + y)
-        st.markdown("Description : " + str(description))
-        leads = ''
-        for i in range(0, 4):
-            leads += actors[i]['name'] + ' , '
-        st.markdown("Cast : " + str(leads))
-
-
-    # Row 8
-    st.subheader(recommended_movie_names[7])
-    st.image(recommended_movie_posters[7], width=250, caption=recommended_movie_names[7])
-    print('\n')
-    y = ''
-    for x in recommended_movie_genre[7]:
-        y += x + ' , '
-    with st.spinner('Fetching movie details ...'):
-        rating, release_year, duration, description, actors = movie_details(recommended_movie_names[7])
-        st.markdown("Ratings : " + str(rating))
-        st.markdown("Release Year : " + str(release_year))
-        st.markdown("Duration : " + str(duration))
-        st.markdown("Genre : " + y)
-        st.markdown("Description : " + str(description))
-        leads = ''
-        for i in range(0, 4):
-            leads += actors[i]['name'] + ' , '
-        st.markdown("Cast : " + str(leads))
-
-
-    # Row 9
-    st.subheader(recommended_movie_names[8])
-    st.image(recommended_movie_posters[8], width=250, caption=recommended_movie_names[8])
-    print('\n')
-    y = ''
-    for x in recommended_movie_genre[8]:
-        y += x + ' , '
-    with st.spinner('Fetching movie details ...'):
-        rating, release_year, duration, description, actors = movie_details(recommended_movie_names[8])
-        st.markdown("Ratings : " + str(rating))
-        st.markdown("Release Year : " + str(release_year))
-        st.markdown("Duration : " + str(duration))
-        st.markdown("Genre : " + y)
-        st.markdown("Description : " + str(description))
-        leads = ''
-        for i in range(0, 4):
-            leads += actors[i]['name'] + ' , '
-        st.markdown("Cast : " + str(leads))
-
+        for i in range(0,len(val)):
+            st.subheader(val[i]['title'])
+            try:
+                st.image(val[i]['imageurl'],caption=val[i]["title"])
+            except:
+                print("Image Not found")
+            st.markdown("Ratings : " + str(val[i]['imdbrating']))
+            st.markdown("Release Year : " + str(val[i]['released']))
+            try:
+                st.markdown("Genre : " + str(val[i]['genre'][0]))
+            except:
+                print("Ratings Not found")
+            st.markdown("Description : " + str(val[i]['synopsis']))
