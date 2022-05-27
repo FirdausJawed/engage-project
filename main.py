@@ -68,7 +68,7 @@ def recommend(movie):
     recommended_movie_posters = []
     recommended_movie_genre = []
 
-    with st.spinner('Wait for a few seconds ...'):
+    with st.spinner('Bear with me ...'):
         for i in distances[1:12]:
             # fetch the movie poster
             movie_id = movies.iloc[i[0]].movie_id
@@ -125,13 +125,13 @@ elif selected_option=="Genre":
         ('action','Comedy','romance', 'Drama', 'Documentary','horror','drama','thriller'))
 
     lang = st.radio(
-        "Please Select the language of the film",
+        "Select the language of the film",
         ('English', 'Hindi', 'Tamil','French','Japanese'))
 
     rate = st.slider('Select the minimum rating of the movie ', 0, 10, 1)
 
     sorting = st.selectbox(
-        'Select the order of filtering?',
+        'Select the order of filtering',
         ('highestrated' , 'lowestrated' , 'latest' , 'oldest'))
 
     if st.button('Show Recommendation'):
