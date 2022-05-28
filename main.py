@@ -67,7 +67,6 @@ def recommend(movie):
     recommended_movie_names = []
     recommended_movie_posters = []
     recommended_movie_genre = []
-
     with st.spinner('Bear with me ...'):
         for i in distances[1:12]:
             # fetch the movie poster
@@ -100,7 +99,7 @@ if selected_option=="Movie":
 
         # Rows
         for i in range(0,9):
-            st.text(recommended_movie_names[i])
+            st.subheader(recommended_movie_names[i])
             st.image(recommended_movie_posters[i],width=250,caption=recommended_movie_names[i])
             print('\n')
             y=''
