@@ -136,7 +136,7 @@ Cosine similarity is a measure of similarity between two non-zero vectors of an 
 Click to play
 
 
-**- [Screenshots]()**
+**- [Screenshots](https://drive.google.com/file/d/1UGLThYkWczC3nnebU1L99Ai1Ll77iZZu/view?usp=sharing)**
 
 
 ## Project References
