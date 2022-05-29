@@ -113,7 +113,7 @@ if selected_option=="Movie":
 
         # Row 1
         for i in range(0,9):
-            st.text(recommended_movie_names[i])
+            st.subheader(recommended_movie_names[i])
             st.image(recommended_movie_posters[i],width=250,caption=recommended_movie_names[i])
             print('\n')
             y=''
