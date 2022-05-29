@@ -97,7 +97,7 @@ $ git push origin master
 
 <a href="#"><p align="center"> <img src="images/2.jpg"/></p></a>
 
-  * For more please refer to my [Jupyter notebook file](https://drive.google.com/file/d/1C-QFOuYaa3Om97RTVNgqQg-U73CweNpy/view?usp=sharing) for detailed explanation.
+  * For more please refer to my [Jupyter notebook file]([https://drive.google.com/file/d/1C-QFOuYaa3Om97RTVNgqQg-U73CweNpy/view?usp=sharing](https://drive.google.com/file/d/1tRvco6cWRGU5hyPHSZzmPdotBsQ_gcci/view?usp=sharing)) for detailed explanation.
 
 
 ## **Implementation**
@@ -133,7 +133,7 @@ The CountVectorizer provides a simple way to both tokenize a collection of text 
 Cosine similarity is a measure of similarity between two non-zero vectors of an inner product space that measures the cosine of the angle between them. The cosine of 0° is 1, and it is less than 1 for any angle in the interval (0, π] radians
 
 ## Demo
-Click to play
+[Click to play](https://drive.google.com/file/d/1sQmR24-yh9xyMK8iALj4bNtV2EmlBVK6/view?usp=sharing)
 
 
 **- [Screenshots](https://drive.google.com/file/d/1UGLThYkWczC3nnebU1L99Ai1Ll77iZZu/view?usp=sharing)**
