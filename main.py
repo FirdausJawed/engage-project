@@ -134,7 +134,7 @@ if selected_option=="Movie":
                 except:
                     print("Api call failed")
 
-elif selected_option=="Ratings":
+elif selected_option=="Genre":
     st.header("Genre Based Recommendation System")
     genre = st.selectbox(
         "What's your favorite movie genre",
