@@ -135,7 +135,7 @@ if selected_option=="Movie":
                     print("Api call failed")
 
 elif selected_option=="Ratings":
-    st.header("Ratings Based Recommendation System")
+    st.header("Genre Based Recommendation System")
     genre = st.selectbox(
         "What's your favorite movie genre",
         ('action','Comedy','romance', 'Drama', 'Documentary','horror','drama','thriller'))
