@@ -94,7 +94,7 @@ st.markdown("<h1 style='text-align: center;'>Sinemate</h1>", unsafe_allow_html=T
 
 selected_option= st.sidebar.selectbox(
         "Select the recommendation system:",
-        ( 'Ratings', 'Movie'))
+        ( 'Genre', 'Movie'))
 
 if selected_option=="Movie":
 
@@ -134,7 +134,7 @@ if selected_option=="Movie":
                 except:
                     print("Api call failed")
 
-elif selected_option=="Rating":
+elif selected_option=="Genre":
     st.header("Genre Based Recommendation System")
     genre = st.selectbox(
         "What's your favorite movie genre",
