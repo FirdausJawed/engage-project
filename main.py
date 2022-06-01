@@ -10,7 +10,7 @@ def movie_rating_wise(genre, lang, rate, sorting):
                    "language": str(lang), "type": "movie", "sort": str(sorting), "page": "1"}
     headers = {
         "X-RapidAPI-Host": "ott-details.p.rapidapi.com",
-        "X-RapidAPI-Key": "47f36b9e3cmsh5a4fa7b497bf159p1115a1jsn1ec7d7f7054d"
+        "X-RapidAPI-Key": "a699c7caa6msha7289db5830307cp166710jsnf6b9b3e6b2de"
     }
     try:
         response = requests.request("GET", url, headers=headers, params=querystring)
@@ -25,7 +25,7 @@ def movie_details(movie_name):
     querystring = {"id": iddd(movie_name)}
     headers = {
         "X-RapidAPI-Host": "movie-details1.p.rapidapi.com",
-        "X-RapidAPI-Key": "47f36b9e3cmsh5a4fa7b497bf159p1115a1jsn1ec7d7f7054d"
+        "X-RapidAPI-Key": "a699c7caa6msha7289db5830307cp166710jsnf6b9b3e6b2de"
     }
     try:
         response = requests.request("GET", url, headers=headers, params=querystring)
@@ -45,7 +45,7 @@ def iddd(movie_name):
     querystring = {"q": movie_name}
     headers = {
         "X-RapidAPI-Host": "online-movie-database.p.rapidapi.com",
-        "X-RapidAPI-Key": "47f36b9e3cmsh5a4fa7b497bf159p1115a1jsn1ec7d7f7054d"
+        "X-RapidAPI-Key": "a699c7caa6msha7289db5830307cp166710jsnf6b9b3e6b2de"
     }
     try:
         response = requests.request("GET", url, headers=headers, params=querystring)
